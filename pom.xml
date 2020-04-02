@@ -6,7 +6,7 @@
 
   <groupId>me.HSGamer</groupId>
   <artifactId>PAPI-COVID-19-Tracker</artifactId>
-  <version>1.0</version>
+  <version>1.1</version>
   <packaging>jar</packaging>
 
   <name>PAPI-Covid19Tracker</name>
