@@ -18,9 +18,14 @@ import org.bukkit.scheduler.BukkitTask;
 public final class Main extends PlaceholderExpansion implements
     Configurable, Taskable {
 
+  private static boolean debug = false;
   private final Map<String, Stats> statsMap = new CaseInsensitiveStringMap<>();
   private final List<BukkitTask> tasks = new ArrayList<>();
   private final String version = getClass().getPackage().getImplementationVersion();
+
+  public static boolean isDebug() {
+    return debug;
+  }
 
   @Override
   public boolean canRegister() {
@@ -46,6 +51,7 @@ public final class Main extends PlaceholderExpansion implements
   public Map<String, Object> getDefaults() {
     Map<String, Object> map = new HashMap<>();
     map.put("interval", 300);
+    map.put("debug", "false");
     map.put("country", Arrays.asList("US", "VN"));
     return map;
   }
@@ -53,6 +59,7 @@ public final class Main extends PlaceholderExpansion implements
   @Override
   public void start() {
     int interval = getInt("interval", 200);
+    debug = Boolean.parseBoolean(getString("debug", "false"));
     statsMap.put("global", new GlobalStats(getPlaceholderAPI()));
     getStringList("country")
         .forEach(country -> statsMap.put(country, new CountryStats(getPlaceholderAPI(), country)));
