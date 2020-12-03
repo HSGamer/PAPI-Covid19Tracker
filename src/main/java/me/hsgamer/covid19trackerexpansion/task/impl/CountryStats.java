@@ -1,9 +1,9 @@
 package me.hsgamer.covid19trackerexpansion.task.impl;
 
+import com.eclipsesource.json.JsonObject;
 import me.hsgamer.covid19trackerexpansion.Utils;
 import me.hsgamer.covid19trackerexpansion.task.Stats;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.json.JSONObject;
 
 public class CountryStats extends Stats {
 
@@ -16,7 +16,7 @@ public class CountryStats extends Stats {
 
     @Override
     public void run() {
-        JSONObject jsonObject = Utils.getJSONObjectFromURL(url);
+        JsonObject jsonObject = Utils.getJSONObjectFromURL(url);
         if (jsonObject == null || Utils.isInvalid(jsonObject)) {
             return;
         }
